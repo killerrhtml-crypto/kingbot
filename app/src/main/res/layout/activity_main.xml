@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KING BOT // CONFIGURACIÓN"
+            android:textColor="#00E5FF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="20dp" />
+
+        <!-- Precio Mínimo por KM -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio Mínimo por KM ($):"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+        <EditText
+            android:id="@+id/etMinPriceKm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#00FF66"
+            android:backgroundTint="#00E5FF"
+            android:paddingBottom="8dp" />
+
+        <!-- Precio Total Mínimo -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio Total Mínimo ($):"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+        <EditText
+            android:id="@+id/etMinPriceTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#00FF66"
+            android:backgroundTint="#00E5FF"
+            android:paddingBottom="8dp" />
+
+        <!-- Precio Máximo Permitido -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio Máximo Permitido ($):"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+        <EditText
+            android:id="@+id/etMaxPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#00FF66"
+            android:backgroundTint="#00E5FF"
+            android:paddingBottom="8dp" />
+
+        <!-- Distancia Máxima de Recogida (A) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Distancia Máx. Recogida / Punto A (KM):"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+        <EditText
+            android:id="@+id/etMaxPickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#00FF66"
+            android:backgroundTint="#00E5FF"
+            android:paddingBottom="8dp" />
+
+        <!-- Extensión Dinámica (Checkbox) -->
+        <CheckBox
+            android:id="@+id/cbDynamicPickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Permitir Extensión Dinámica de Recogida"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#00E5FF"
+            android:layout_marginTop="8dp" />
+
+        <!-- Distancia Máxima del Viaje (B) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Distancia Máx. Total del Viaje / Punto B (KM):"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+        <EditText
+            android:id="@+id/etMaxTrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="#00FF66"
+            android:backgroundTint="#00E5FF"
+            android:paddingBottom="20dp" />
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnSaveSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR CONFIGURACIÓN"
+            android:backgroundTint="#00E5FF"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Botón Iniciar Burbuja -->
+        <Button
+            android:id="@+id/btnStartFloating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INICIAR BURBUJA FLOTANTE"
+            android:backgroundTint="#00FF66"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">King Bot</string>
+    <string name="accessibility_service_description">King Bot requiere accesibilidad para automatizar la evaluación de viajes de forma segura.</string>
+</resources>

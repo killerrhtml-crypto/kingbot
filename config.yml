@@ -1,0 +1,13 @@
+king_bot_config:
+  version: "1.0.0"
+  security:
+    auth_required: true
+    validation_mode: "offline_token" # o "remote_api"
+    master_key_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  thresholds:
+    min_price_per_km: 1.50
+    min_price_total: 3.00
+    max_price_allowed: 50.00
+    max_pickup_km: 2.5
+    allow_dynamic_pickup: true
+    max_trip_km: 20.0

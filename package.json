@@ -1,0 +1,12 @@
+{
+  "name": "king-bot",
+  "version": "1.0.0",
+  "description": "Elite Android Automation Bot for inDrive",
+  "scripts": {
+    "build:debug": "./gradlew assembleDebug",
+    "build:release": "./gradlew assembleRelease",
+    "clean": "./gradlew clean",
+    "test": "./gradlew test"
+  },
+  "private": true
+}

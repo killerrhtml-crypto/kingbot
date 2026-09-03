@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_floating_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+
+    <!-- Vista Colapsada (Cápsula Neón Flotante) -->
+    <LinearLayout
+        android:id="@+id/collapsed_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#CC111111"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:elevation="8dp">
+
+        <!-- Indicador de Estado (Rojo / Verde) -->
+        <View
+            android:id="@+id/status_indicator"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="#FF0033"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KING BOT"
+            android:textColor="#00E5FF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Vista Expandida (Panel de Control Rápido) -->
+    <LinearLayout
+        android:id="@+id/expanded_container"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#E61A1A1A"
+        android:padding="12dp"
+        android:visibility="gone"
+        android:elevation="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KING BOT CONTROL"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/btn_toggle_bot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INICIAR BOT"
+            android:textColor="#FFFFFF"
+            android:background="#1B5E20"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:color="#0D0D0D"/>
+    <foreground>
+        <!-- Gráfico o color representativo del núcleo con acento neón -->
+        <shape android:shape="oval">
+            <solid android:color="#00FF66"/>
+        </shape>
+    </foreground>
+</adaptive-icon>
