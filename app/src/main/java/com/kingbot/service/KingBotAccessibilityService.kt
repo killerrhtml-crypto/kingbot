@@ -13,32 +13,31 @@ class KingBotAccessibilityService : AccessibilityService() {
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
         val rootNode: AccessibilityNodeInfo = rootInActiveWindow ?: return
-        traverseAndExtractRideData(rootNode)
+        evaluateInDriveCards(rootNode)
         rootNode.recycle()
     }
 
-    private fun traverseAndExtractRideData(node: AccessibilityNodeInfo) {
+    private fun evaluateInDriveCards(node: AccessibilityNodeInfo) {
         val text = node.text?.toString() ?: ""
-        
+
         if (text.isNotEmpty()) {
-            if (isPriceNode(text)) {
-                Log.d(TAG, "Precio detectado dinámicamente: $text")
+            // Detección específica para tarifas en República Dominicana (ej: DOP 165)
+            if (text.contains("DOP") || text.contains("$")) {
+                Log.d(TAG, "Tarifa detectada en DOP: $text")
+                // Aquí aplicamos la lectura de los SharedPreferences para evaluar si cumple el precio mínimo por KM
             }
-            
+
+            // Detección de reputación y viajes (ej: 5.0 (1) o 4.78 (126))
             if (text.contains("★") || (text.contains("(") && text.contains(")"))) {
-                Log.d(TAG, "Reputación/Viajes detectados: $text")
+                Log.d(TAG, "Estadísticas del pasajero/conductor detectadas: $text")
             }
         }
 
         for (i in 0 until node.childCount) {
             val child = node.getChild(i) ?: continue
-            traverseAndExtractRideData(child)
+            evaluateInDriveCards(child)
             child.recycle()
         }
-    }
-
-    private fun isPriceNode(text: String): Boolean {
-        return text.any { it.isDigit() } && (text.contains("DOP") || text.contains("$") || text.length <= 6)
     }
 
     override fun onInterrupt() {
