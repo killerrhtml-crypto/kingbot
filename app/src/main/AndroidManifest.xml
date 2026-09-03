@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kingbot">
 
-    <!-- Permisos críticos del sistema -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -16,9 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
-        <!-- Pantalla de Seguridad (Primer punto de entrada) -->
         <activity
-            android:name=".ui.SecurityActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,18 +24,11 @@
             </intent-filter>
         </activity>
 
-        <!-- Panel de Control Principal (Al que se accede tras validar) -->
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false" />
-
-        <!-- Servicio de Control Flotante (Burbuja HUD) -->
         <service
             android:name=".service.FloatingControlService"
             android:enabled="true"
             android:exported="false" />
 
-        <!-- Servicio de Accesibilidad (El Ojo del Bot) -->
         <service
             android:name=".service.KingBotAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -49,7 +40,5 @@
                 android:name="android.accessibilityservice.accessibility_service_config"
                 android:resource="@xml/accessibility_service_config" />
         </service>
-
     </application>
-
 </manifest>
