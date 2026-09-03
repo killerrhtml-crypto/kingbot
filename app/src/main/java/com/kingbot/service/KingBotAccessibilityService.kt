@@ -13,17 +13,32 @@ class KingBotAccessibilityService : AccessibilityService() {
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
         val rootNode: AccessibilityNodeInfo = rootInActiveWindow ?: return
-        evaluateAndAutomate(rootNode)
+        traverseAndExtractRideData(rootNode)
         rootNode.recycle()
     }
 
-    private fun evaluateAndAutomate(node: AccessibilityNodeInfo) {
-        // Lógica de escaneo y evaluación de parámetros de ofertas
+    private fun traverseAndExtractRideData(node: AccessibilityNodeInfo) {
+        val text = node.text?.toString() ?: ""
+        
+        if (text.isNotEmpty()) {
+            if (isPriceNode(text)) {
+                Log.d(TAG, "Precio detectado dinámicamente: $text")
+            }
+            
+            if (text.contains("★") || (text.contains("(") && text.contains(")"))) {
+                Log.d(TAG, "Reputación/Viajes detectados: $text")
+            }
+        }
+
         for (i in 0 until node.childCount) {
             val child = node.getChild(i) ?: continue
-            // Procesamiento de nodos hijos para automatización de oferta
+            traverseAndExtractRideData(child)
             child.recycle()
         }
+    }
+
+    private fun isPriceNode(text: String): Boolean {
+        return text.any { it.isDigit() } && (text.contains("DOP") || text.contains("$") || text.length <= 6)
     }
 
     override fun onInterrupt() {
