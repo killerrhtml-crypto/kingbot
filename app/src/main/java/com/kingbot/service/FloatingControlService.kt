@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import com.kingbot.R
+import com.kingbot.engine.BotStateManager
 
 class FloatingControlService : Service() {
 
@@ -24,10 +25,8 @@ class FloatingControlService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         
-        // Inflar el diseño flotante (usaremos un botón simple o contenedor personalizado)
         floatingView = LayoutInflater.from(this).inflate(R.layout.layout_floating_bubble, null)
 
         val LAYOUT_FLAG = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -50,13 +49,15 @@ class FloatingControlService : Service() {
 
         windowManager.addView(floatingView, params)
 
-        // Configurar el botón o interacción de la burbuja
         val btnBubble = floatingView.findViewById<Button>(R.id.btnBubbleAction)
+        updateBubbleColor(btnBubble)
+        
         btnBubble.setOnClickListener {
-            Toast.makeText(this, "King Bot Activo en Segundo Plano", Toast.LENGTH_SHORT).show()
+            val isActive = BotStateManager.toggleBotState()
+            updateBubbleColor(btnBubble)
+            Toast.makeText(this, if (isActive) "King Bot ACTIVO" else "King Bot PAUSADO", Toast.LENGTH_SHORT).show()
         }
 
-        // Lógica para arrastrar la burbuja por la pantalla con el dedo
         floatingView.setOnTouchListener(object : View.OnTouchListener {
             private var initialX = 0
             private var initialY = 0
@@ -88,6 +89,16 @@ class FloatingControlService : Service() {
         super.onDestroy()
         if (::floatingView.isInitialized) {
             windowManager.removeView(floatingView)
+        }
+    }
+
+    private fun updateBubbleColor(btn: Button) {
+        if (BotStateManager.isBotActive) {
+            btn.setBackgroundColor(android.graphics.Color.GREEN)
+            btn.text = "👑\nON"
+        } else {
+            btn.setBackgroundColor(android.graphics.Color.RED)
+            btn.text = "👑\nOFF"
         }
     }
 }

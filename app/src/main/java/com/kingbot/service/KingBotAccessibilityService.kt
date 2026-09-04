@@ -12,6 +12,8 @@ class KingBotAccessibilityService : AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
+        if (!com.kingbot.engine.BotStateManager.isBotActive) return
+
         val rootNode: AccessibilityNodeInfo = rootInActiveWindow ?: return
         evaluateInDriveCards(rootNode)
         rootNode.recycle()
@@ -21,13 +23,9 @@ class KingBotAccessibilityService : AccessibilityService() {
         val text = node.text?.toString() ?: ""
 
         if (text.isNotEmpty()) {
-            // Detección específica para tarifas en República Dominicana (ej: DOP 165)
             if (text.contains("DOP") || text.contains("$")) {
                 Log.d(TAG, "Tarifa detectada en DOP: $text")
-                // Aquí aplicamos la lectura de los SharedPreferences para evaluar si cumple el precio mínimo por KM
             }
-
-            // Detección de reputación y viajes (ej: 5.0 (1) o 4.78 (126))
             if (text.contains("★") || (text.contains("(") && text.contains(")"))) {
                 Log.d(TAG, "Estadísticas del pasajero/conductor detectadas: $text")
             }
