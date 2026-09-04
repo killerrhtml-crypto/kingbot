@@ -11,6 +11,12 @@ buildscript {
 }
 
 allprojects {
+    // Añadimos repositorios para todos los subproyectos para garantizar resolución de artefactos
+    repositories {
+        google()
+        mavenCentral()
+    }
+
     configurations.all {
         resolutionStrategy {
             failOnVersionConflict()
